@@ -44,7 +44,7 @@
            attribution: 'Elevation attribution',
            pixelEncoding: 'terrain-rgb', // 'nasadem' or 'terrain-rgb', 'terrarium'
            maxZoom: 21,
-           urlFormat: 'http://gataki/at_dsm_1m/{z}/{x}/{y}.png?key={apiKey}'
+           urlFormat: 'http://gataki.cg.tuwien.ac.at/at_dsm_1m/{z}/{x}/{y}.png?key={apiKey}'
          },
          imagery: {
            apiKey: 'GET_AN_API_KEY_FROM_YOUR_IMAGERY_PROVIDER',
@@ -60,6 +60,25 @@
         Procedural.setUserLocationControlVisible( true );
         Procedural.setRotationControlVisible( true );
         Procedural.setZoomControlVisible( true );
+        var configuration = {
+            // Minimum distance camera can approach scene
+            minDistance: 10,
+            // Maximum distance camera can move from scene
+            maxDistance: 5000000,
+            // Maximum distance camera target can move from scene
+            maxBounds: 7500,
+            // Minimum polar angle of camera
+            minPolarAngle: 0.05 * Math.PI,
+            // Maximum polar angle of camera
+            maxPolarAngle: 1.0 * Math.PI,
+            // Set to true to disable panning
+            noPan: false,
+            // Set to true to disable rotating
+            noRotate: false,
+            // Set to true to disable zooming
+            noZoom: false
+        };
+        Procedural.configureControls( configuration );
 
         // Load random location
         const latitude = 47.142;
