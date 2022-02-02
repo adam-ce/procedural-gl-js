@@ -25,32 +25,35 @@
         // Define API Keys (replace these with your own!)
         // To obtain an API key go to:
         // https://cloud.maptiler.com/account/?ref=procedural
-        const MAPTILER_APIKEY = null;
-        if ( !MAPTILER_APIKEY ) {
-          const error = Error( 'Modify index.html to include API keys' );
-          container.innerHTML = 'Modify datasource definition to contain a valid API key. <a href="https://cloud.maptiler.com/account/?ref=procedural">Click here to get a free API key</a>'; 
-          throw error;
-        }
+//         const MAPTILER_APIKEY = null;
+//         if ( !MAPTILER_APIKEY ) {
+//           const error = Error( 'Modify index.html to include API keys' );
+//           container.innerHTML = 'Modify datasource definition to contain a valid API key. <a href="https://cloud.maptiler.com/account/?ref=procedural">Click here to get a free API key</a>'; 
+//           throw error;
+//         }
 
-        const datasource = {
-          provider: 'maptiler',
-          apiKey: MAPTILER_APIKEY,
-        }
+//         const datasource = {
+//           provider: 'maptiler',
+//           apiKey: MAPTILER_APIKEY,
+//         }
 
         // Custom datasource definition
-        //const datasource = {
-        //  elevation: {
-        //    apiKey: 'GET_AN_API_KEY_FROM_YOUR_ELEVATION_PROVIDER',
-        //    attribution: 'Elevation attribution',
-        //    pixelEncoding: 'nasadem', // or 'terrain-rgb', 'terrarium'
-        //    urlFormat: 'https://elevation.example.com/tiles/{z}/{x}/{y}.jpg?key={apiKey}'
-        //  },
-        //  imagery: {
-        //    apiKey: 'GET_AN_API_KEY_FROM_YOUR_IMAGERY_PROVIDER',
-        //    attribution: 'Imagery attribution',
-        //    urlFormat: 'https://imagery.example.com/tiles/{z}/{x}/{y}.jpg?key={apiKey}'
-        //  }
-        //}
+        const datasource = {
+         elevation: {
+           apiKey: 'GET_AN_API_KEY_FROM_YOUR_ELEVATION_PROVIDER',
+           attribution: 'Elevation attribution',
+           pixelEncoding: 'terrain-rgb', // 'nasadem' or 'terrain-rgb', 'terrarium'
+           maxZoom: 21,
+           urlFormat: 'http://gataki/at_dsm_1m/{z}/{x}/{y}.png?key={apiKey}'
+         },
+         imagery: {
+           apiKey: 'GET_AN_API_KEY_FROM_YOUR_IMAGERY_PROVIDER',
+           attribution: 'Imagery attribution',
+           maxZoom: 21,
+//            urlFormat: 'https://maps1.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{x}/{y}.jpeg'
+           urlFormat: 'https://maps.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg'
+         }
+        }
         Procedural.init( { container, datasource } );
         Procedural.setCameraModeControlVisible( true );
         Procedural.setCompassVisible( true );
@@ -59,8 +62,8 @@
         Procedural.setZoomControlVisible( true );
 
         // Load random location
-        const latitude = 42 + 8 * Math.random();
-        const longitude = 6 + 8 * Math.random();
+        const latitude = 47.142;
+        const longitude = 9.877;
         Procedural.displayLocation( {
           latitude:latitude, longitude:longitude
         } );

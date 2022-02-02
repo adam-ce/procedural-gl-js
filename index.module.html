@@ -33,25 +33,25 @@
           throw error;
         }
 
-        const datasource = {
-          provider: 'maptiler',
-          apiKey: MAPTILER_APIKEY,
-        }
+//         const datasource = {
+//           provider: 'maptiler',
+//           apiKey: MAPTILER_APIKEY,
+//         }
 
-        // Custom datasource definition
-        //const datasource = {
-        //  elevation: {
-        //    apiKey: 'GET_AN_API_KEY_FROM_YOUR_ELEVATION_PROVIDER',
-        //    attribution: 'Elevation attribution',
-        //    pixelEncoding: 'nasadem', // or 'terrain-rgb', 'terrarium'
-        //    urlFormat: 'https://elevation.example.com/tiles/{z}/{x}/{y}.jpg?key={apiKey}'
-        //  },
-        //  imagery: {
-        //    apiKey: 'GET_AN_API_KEY_FROM_YOUR_IMAGERY_PROVIDER',
-        //    attribution: 'Imagery attribution',
-        //    urlFormat: 'https://imagery.example.com/tiles/{z}/{x}/{y}.jpg?key={apiKey}'
-        //  }
-        //}
+        Custom datasource definition
+        const datasource = {
+         elevation: {
+           apiKey: 'GET_AN_API_KEY_FROM_YOUR_ELEVATION_PROVIDER',
+           attribution: 'Elevation attribution',
+           pixelEncoding: 'nasadem', // or 'terrain-rgb', 'terrarium'
+           urlFormat: 'https://elevation.example.com/tiles/{z}/{x}/{y}.jpg?key={apiKey}'
+         },
+         imagery: {
+           apiKey: 'GET_AN_API_KEY_FROM_YOUR_IMAGERY_PROVIDER',
+           attribution: 'Imagery attribution',
+           urlFormat: 'https://imagery.example.com/tiles/{z}/{x}/{y}.jpg?key={apiKey}'
+         }
+        }
         Procedural.init( { container, datasource } );
         Procedural.setCameraModeControlVisible( true );
         Procedural.setCompassVisible( true );
